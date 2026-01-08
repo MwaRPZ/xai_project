@@ -1,0 +1,13 @@
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+streamlit>=1.30.0
+librosa>=0.10.0
+matplotlib>=3.7.0
+pillow>=10.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-image>=0.21.0
+lime>=0.2.0
+shap>=0.42.0
+kagglehub>=0.2.0

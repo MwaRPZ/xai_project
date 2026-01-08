@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data (Don't commit large datasets)
+data/
+*.wav
+*.mp3
+*.jpg
+*.png
+*.jpeg
+*.dcm
+*.csv
+
+# Kaggle cache
+.cache/
+.kaggle/
+
+# Models (Don't commit trained models - too large)
+models/*.pth
+models/*.h5
+models/*.pt
+*.pth
+*.h5
+*.pt
+
+# Temporary files
+temp.wav
+*.tmp
+*.log
+
+# Streamlit
+.streamlit/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Artifacts (optional - keep if you want to share planning docs)
+# .gemini/
+
+# Keep model directory structure but ignore weights
+!models/.gitkeep
+!data/.gitkeep
+
+# Cloned reference repositories (not part of our project)
+Deepfake-Audio-Detection-with-XAI/
+LungCancerDetection/
+
