@@ -39,7 +39,17 @@ def explain_audio_lime(img_array, model, num_samples=1000):
     return explanation
 
 def visualize_lime(explanation, label):
-    # temp, mask = explanation.get_image_and_mask(label, positive_only=True, num_features=5, hide_rest=False)
-    temp, mask = explanation.get_image_and_mask(label, positive_only=False, num_features=5, hide_rest=False)
-    img_boundary = mark_boundaries(temp / 2 + 0.5, mask)
+    # Récupérer l'image et le masque
+    temp, mask = explanation.get_image_and_mask(
+        label,
+        positive_only=False,
+        num_features=5,
+        hide_rest=False,
+    )
+
+    # Normaliser temp dans [0, 1] au lieu de temp/2+0.5
+    temp = temp.astype(np.float32)
+    temp = (temp - temp.min()) / (temp.max() - temp.min() + 1e-8)
+
+    img_boundary = mark_boundaries(temp, mask)
     return img_boundary
