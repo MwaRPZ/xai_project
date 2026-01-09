@@ -70,7 +70,13 @@ desktop.ini
 !models/.gitkeep
 !data/.gitkeep
 
-# Cloned reference repositories (not part of our project)
-Deepfake-Audio-Detection-with-XAI/
-LungCancerDetection/
+# Professional artifacts
+DEMO_GUIDE.md
+TECHNICAL_REPORT.md
+TEST_FILES.md
+test_samples/
+
+# Temporary office files
+~$*
+
 
