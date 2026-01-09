@@ -40,10 +40,8 @@ ENV/
 # Data (Don't commit large datasets)
 data/audio
 data/image
-*.wav
 *.mp3
-*.jpg
-*.png
+
 *.jpeg
 *.dcm
 *.csv
