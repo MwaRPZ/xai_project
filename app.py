@@ -262,7 +262,7 @@ with tab3:
                             viz = visualize_lime(expl, result['prediction'])
                             st.image(viz, use_container_width=True)
                         elif method == "SHAP":
-                            shap_vals, _ = explain_with_shap(audio_model, result['tensor'], num_samples=50)
+                            shap_vals, _ = explain_with_shap(audio_model, result['tensor'])
                             shap_viz = visualize_shap(shap_vals, result['tensor'], class_idx=result['prediction'])
                             st.image(shap_viz, use_container_width=True)
                     except Exception as e:
