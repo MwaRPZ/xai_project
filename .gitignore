@@ -38,7 +38,8 @@ ENV/
 .ipynb_checkpoints
 
 # Data (Don't commit large datasets)
-data/
+data/audio
+data/image
 *.wav
 *.mp3
 *.jpg
