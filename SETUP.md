@@ -10,7 +10,7 @@
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd XAI
+cd xai_project
 ```
 
 ### 2. Install Dependencies
