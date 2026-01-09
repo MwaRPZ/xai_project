@@ -131,7 +131,7 @@ with tab1:
                     with st.expander("📊 SHAP Explanation", expanded=True):
                         try:
                             with st.spinner("Computing SHAP values..."):
-                                shap_vals, base_val = explain_with_shap(audio_model, result['tensor'], num_samples=50)
+                                shap_vals, base_val = explain_with_shap(audio_model, result['tensor'])
                                 shap_viz = visualize_shap(shap_vals, result['tensor'], class_idx=result['prediction'])
                                 st.image(shap_viz, caption="SHAP: Feature importance heatmap", use_container_width=True)
                         except Exception as e:
@@ -227,7 +227,7 @@ with tab2:
                     with st.expander("📊 SHAP Explanation", expanded=True):
                         try:
                             with st.spinner("Computing SHAP values..."):
-                                shap_vals, base_val = explain_with_shap(image_model, result['tensor'], num_samples=50)
+                                shap_vals, base_val = explain_with_shap(image_model, result['tensor'])
                                 shap_viz = visualize_shap(shap_vals, result['tensor'], class_idx=result['prediction'])
                                 st.image(shap_viz, caption="SHAP: Feature importance", use_container_width=True)
                         except Exception as e:
@@ -298,7 +298,7 @@ with tab3:
                             
                             st.image(overlay, use_container_width=True)
                         elif method == "SHAP":
-                            shap_vals, _ = explain_with_shap(image_model, result['tensor'], num_samples=50)
+                            shap_vals, _ = explain_with_shap(image_model, result['tensor'])
                             shap_viz = visualize_shap(shap_vals, result['tensor'], class_idx=result['prediction'])
                             st.image(shap_viz, use_container_width=True)
                     except Exception as e:
