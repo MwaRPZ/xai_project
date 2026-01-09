@@ -52,7 +52,10 @@ class CheXpertDataset(Dataset):
             
         return image, label
 
+#Depending on which coputer runs the training
+#def train_lung_model(epochs=10, batch_size=64, max_samples=100000):
 def train_lung_model(epochs=10, batch_size=32, max_samples=5000):
+
     csv_path = "data/image/train.csv"
     root_dir = "data/image"
     
