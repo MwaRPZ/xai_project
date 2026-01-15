@@ -9,6 +9,7 @@ from modules.audio_detector.preprocess import create_spectrogram
 from modules.audio_detector.lime_explainer import explain_audio_lime, visualize_lime
 from modules.image_detector.grad_cam import GradCAM
 from modules.common.shap_explainer import explain_with_shap, visualize_shap
+from modules.common.ig_explainer import explain_with_ig, visualize_ig
 import matplotlib.pyplot as plt
 
 # Page Config
@@ -69,7 +70,7 @@ with tab1:
             
             # XAI Method Selection with Filtering
             st.subheader("XAI Methods")
-            available_methods = ["LIME", "SHAP"]
+            available_methods = ["LIME", "SHAP", "Integrated Gradients"]
             selected_xai = st.multiselect(
                 "Select methods to apply:",
                 available_methods,
@@ -136,6 +137,16 @@ with tab1:
                                 st.image(shap_viz, caption="SHAP: Feature importance heatmap", use_container_width=True)
                         except Exception as e:
                             st.error(f"SHAP Error: {e}")
+                
+                # Integrated Gradients
+                if "Integrated Gradients" in result['selected_xai']:
+                    with st.expander("📉 Integrated Gradients", expanded=True):
+                        try:
+                            ig_attr, _, _ = explain_with_ig(audio_model, result['tensor'], steps=30)
+                            ig_viz = visualize_ig(ig_attr, result['tensor'])
+                            st.image(ig_viz, caption="IG: Gradient Accumulation", use_container_width=True)
+                        except Exception as e:
+                            st.error(f"IG Error: {e}")
 
 # === Tab 2: Image ===
 with tab2:
@@ -151,7 +162,7 @@ with tab2:
             
             # XAI Method Selection
             st.subheader("XAI Methods")
-            img_xai_methods = ["Grad-CAM", "SHAP"]
+            img_xai_methods = ["Grad-CAM", "SHAP", "Integrated Gradients"]
             selected_img_xai = st.multiselect(
                 "Select methods:",
                 img_xai_methods,
@@ -233,6 +244,16 @@ with tab2:
                         except Exception as e:
                             st.error(f"SHAP Error: {e}")
 
+                # Integrated Gradients
+                if "Integrated Gradients" in result['selected_xai']:
+                    with st.expander("📉 Integrated Gradients", expanded=True):
+                        try:
+                            ig_attr, _, _ = explain_with_ig(image_model, result['tensor'], steps=30)
+                            ig_viz = visualize_ig(ig_attr, result['tensor'])
+                            st.image(ig_viz, caption="IG: Integrated Gradients Heatmap", use_container_width=True)
+                        except Exception as e:
+                                st.error(f"IG Error: {e}")
+
 # === Tab 3: Comparison ===
 with tab3:
     st.header("📊 XAI Method Comparison")
@@ -265,6 +286,10 @@ with tab3:
                             shap_vals, _ = explain_with_shap(audio_model, result['tensor'])
                             shap_viz = visualize_shap(shap_vals, result['tensor'], class_idx=result['prediction'])
                             st.image(shap_viz, use_container_width=True)
+                        elif method == "Integrated Gradients":
+                            ig_attr, _, _ = explain_with_ig(audio_model, result['tensor'], steps=30)
+                            ig_viz = visualize_ig(ig_attr, result['tensor'])
+                            st.image(ig_viz, use_container_width=True)
                     except Exception as e:
                         st.error(f"Error: {e}")
         
@@ -301,6 +326,10 @@ with tab3:
                             shap_vals, _ = explain_with_shap(image_model, result['tensor'])
                             shap_viz = visualize_shap(shap_vals, result['tensor'], class_idx=result['prediction'])
                             st.image(shap_viz, use_container_width=True)
+                        elif method == "Integrated Gradients":
+                            ig_attr, _, _ = explain_with_ig(image_model, result['tensor'], steps=30)
+                            ig_viz = visualize_ig(ig_attr, result['tensor'])
+                            st.image(ig_viz, use_container_width=True)
                     except Exception as e:
                         st.error(f"Error: {e}")
         else:

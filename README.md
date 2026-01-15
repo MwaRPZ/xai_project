@@ -1,5 +1,21 @@
 # Unified XAI Interface for Deepfake & Lung Cancer Detection
 
+## Authors
+
+- **Adrien Servas**
+- **Alexandre Francony**
+- **Léonard Seidlitz**
+- **Raphael Roux**
+- **Romain Requena**
+
+## Use of AI
+We used AI in this project to :
+- Help us with the code implementation of XAI models
+- Help us with the project structure
+- Help us with debugging
+
+The AI that we used are Chat GPT and Gemini
+
 This project integrates two Explainable AI (XAI) systems into a single Streamlit interface:
 1.  **Deepfake Audio Detection**: MobileNetV2 + LIME + SHAP
 2.  **Lung Cancer Detection**: MobileNetV2 + Grad-CAM + SHAP
